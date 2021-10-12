@@ -24,7 +24,6 @@ int main(){
     }
     else if(pid>0){
         char buf[4];
-        //文件描述符
         close(childFd[0]);
         close(parentFd[1]);
         write(childFd[1],buf,4);
@@ -32,7 +31,7 @@ int main(){
         read(parentFd[0],buf,4);
         close(parentFd[0]);
         fprintf(1,"%d: received pong\n",getpid());
-        wait(&pid);//等待子进程
+        wait(&pid);//waiting for child process
     }
     else{
         exit(1);
